@@ -33,14 +33,14 @@ def driver2():
     f1 = lambda x: (10/(x+4))**(1/2)
     # fixed point is alpha1 = 1.3652300134140976
     Nmax = 100
-    tol = 1e-6
+    tol = 1e-10
     # test f1 '''
     x0 = 1.5
     [x, xstar,ier] = fixedpt(f1,x0,tol,Nmax)
     print('the approximate fixed point is:',xstar)
     print('f1(xstar):',f1(xstar))
     print('Error message reads:',ier)
-    print('All are ', x)
+    print('All x values are: ', x)
 
     [fit, diff1, diff2] = compute_order(x, xstar)
 
@@ -56,7 +56,7 @@ def fixedpt(f,x0,tol,Nmax):
     while (count <Nmax):
         count = count +1
         x1 = f(x0)
-        x = np.append(x, x0)
+        x = np.append(x, x1)
         if (abs(x1-x0) <tol):
             xstar = x1
             ier = 0
