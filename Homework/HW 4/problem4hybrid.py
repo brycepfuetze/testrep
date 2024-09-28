@@ -36,7 +36,12 @@ def hybrid_method(f, fprime, fdoubleprime,a,b,tol):
 
 
     d = 0.5*(a+b)
-    while (abs(f(d) * fprime(d) / fdoubleprime(d))< 1):
+    fd = f(d)
+
+    while (abs(f(d) * fprime(d) / fdoubleprime(d))> 1):
+      fd = f(d)
+      fprimed = fprime(d)
+      fdoubleprimed = fdoubleprime(d)
       fd = f(d)
       if (fd ==0):
         astar = d
@@ -72,14 +77,14 @@ def hybrid_method(f, fprime, fdoubleprime,a,b,tol):
 
 
 # test functions
-f = lambda x: np.exp(x**2 + 7*x - 30) - 1
-fprime = lambda x: (2*x+7) * np.exp(x**2 + 7*x - 30)
-fdoubleprime = lambda x: (2*x+7) * (2*x+7) * np.exp(x**2 + 7*x - 30)
+f = lambda x: np.exp(3*x) - 27*x**6 + 27*x**4 * np.exp(x) - 9*x**2 * np.exp(2*x)
+fprime = lambda x: 3*np.exp(3*x) - 162*x**5 + 108*x**3 * np.exp(x) + 27*x**4 * np.exp(x) - 18*x * np.exp(2*x) - 18*x**2 * np.exp(2*x)
+fdoubleprime = lambda x: 9*np.exp(3*x) - 810*x**4 + 324*x**2 * np.exp(x) + 108*x**3 * np.exp(x) + 27*x**4 * np.exp(x) - 18*np.exp(2*x) - 72*x * np.exp(2*x) - 72*x**2 * np.exp(2*x)
 
 Nmax = 100
 tol = 1e-13
-a = 2
-b = 4.5
+a = 3
+b = 5
 # test f1 '''
 x0 = 0.01
 [xstar, ier, count] = hybrid_method(f, fprime, fdoubleprime,a,b,tol)
