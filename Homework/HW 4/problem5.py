@@ -72,13 +72,13 @@ errNewton = xNewton - xstarNewt
 print("Newton error", errNewton)
 print("Secant error", errSecant)
 
-seckplus1 = np.delete(errSecant, 1)
+seckplus1 = np.delete(errSecant, 0)
 seck = np.delete(errSecant, -1)
 
-newtonkplus1 = np.delete(errNewton, 1)
+newtonkplus1 = np.delete(errNewton, 0)
 newtonk = np.delete(errNewton, -1)
 
 fig = px.line(x=newtonk, y=newtonkplus1, log_x=True, log_y=True, title='Error of Newton and Secant Methods', labels={'x1': 'X Axis', 'y1': 'Y Axis'})
-fig.add_scatter(x=seck, y=seckplus1, mode='lines', name='Secant Method', line=dict(color='red'))
+#fig.add_scatter(x=seck, y=seckplus1, mode='lines', name='Secant Method', line=dict(color='red'))
 
 fig.show()
