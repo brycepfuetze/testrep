@@ -2,9 +2,6 @@ import numpy as np
 
 # define routines
 def fixedpt(f,x0,tol,Nmax):
-    ''' x0 = initial guess'''
-    ''' Nmax = max number of iterations'''
-    ''' tol = stopping tolerance'''
     count = 0
     x = np.array(x0)
 
