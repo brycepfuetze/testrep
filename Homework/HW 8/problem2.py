@@ -39,10 +39,10 @@ def driver():
 
         ''' create equispaced interpolation nodes'''
         # xint = np.linspace(a,b,N[i]+1)
-        # change to Chebychev!
+        # change to Chebychev! 2nd kind!!!
         xint = []
-        for j in range(1, N[i] + 2):  # j starts from 1 to N+1 (inclusive) to match Chebyshev node formula
-            xint.append(-5 * np.cos((2 * j - 1) * np.pi / (2 * (N[i] + 1))))
+        for j in range(N[i] + 1):
+            xint.append(-5 * np.cos(j * np.pi / N[i]))
         xint = np.array(xint)
         
         ''' create interpolation data'''
