@@ -81,7 +81,7 @@ noisy_uniform_f = f(X) + np.random.choice([-1, 1])*0.1*np.random.random(1024)
 # move outside of for loop, don't need to calc every time
 fftsample = fft(noisy_normal_f)
 
-for k in [1,2,5,15,30,50,100]:
+for k in [0,1,2,5,15,30,50,100]:
     filterk = keep_k_lowest_freqs(fftsample, k)
 
     ## Error analysis 
